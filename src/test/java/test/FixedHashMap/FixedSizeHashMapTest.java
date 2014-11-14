@@ -5,15 +5,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import practice.FixedHashMap.HistoryDeletingHashMap;
+import practice.FixedHashMap.FixedSizeHashMap;
 
 public class FixedSizeHashMapTest {
 	
 	@Test
 	public void testConstructor() {
 		int integerMapMax = 10;
-		HistoryDeletingHashMap<Integer, Integer> integerMap = 
-				new HistoryDeletingHashMap<Integer, Integer>(integerMapMax);
+		FixedSizeHashMap<Integer, Integer> integerMap = 
+				new FixedSizeHashMap<Integer, Integer>(integerMapMax);
 		assertNotNull(integerMap);
 		// Assert that the map is empty
 		assertEquals(0, integerMap.size());
@@ -24,8 +24,8 @@ public class FixedSizeHashMapTest {
 	@Test
 	public void testMuchLessThanFull() {
 		int integerMapMax = 100;
-		HistoryDeletingHashMap<Integer, String> integerMap = 
-				new HistoryDeletingHashMap<Integer, String>(integerMapMax);
+		FixedSizeHashMap<Integer, String> integerMap = 
+				new FixedSizeHashMap<Integer, String>(integerMapMax);
 		
 		int firstSetSize = 25;
 		for(int i = 0; i < firstSetSize; i++){
@@ -49,8 +49,8 @@ public class FixedSizeHashMapTest {
 	public void testExactlyFull() {
 
 		int integerMapMax = 100;
-		HistoryDeletingHashMap<Integer, String> integerMap = 
-				new HistoryDeletingHashMap<Integer, String>(integerMapMax);
+		FixedSizeHashMap<Integer, String> integerMap = 
+				new FixedSizeHashMap<Integer, String>(integerMapMax);
 		
 		int firstSetSize = integerMapMax;
 		for(int i = 0; i < firstSetSize; i++){
@@ -80,8 +80,8 @@ public class FixedSizeHashMapTest {
 	public void testOverFull() {
 
 		int integerMapMax = 100;
-		HistoryDeletingHashMap<Integer, String> integerMap = 
-				new HistoryDeletingHashMap<Integer, String>(integerMapMax);
+		FixedSizeHashMap<Integer, String> integerMap = 
+				new FixedSizeHashMap<Integer, String>(integerMapMax);
 		
 		int firstSetSize = integerMapMax + 50;
 		for(int i = 0; i < firstSetSize; i++){

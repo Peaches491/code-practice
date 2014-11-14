@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 @SuppressWarnings("serial")
-public class HistoryDeletingHashMap<K, V>{
+public class FixedSizeHashMap<K, V>{
 	
 	public class LinkedEntry<K, V>{
 		public LinkedEntry<K, V> prev;
@@ -38,9 +38,9 @@ public class HistoryDeletingHashMap<K, V>{
 	private K tailKey = null;
 	private LinkedEntry<K, V> tailEntry = null;
 	
-	public HistoryDeletingHashMap (int maxSize){
+	public FixedSizeHashMap (int maxSize){
 		this.maxSize = maxSize;
-		this.dataMap = new HashMap<K, HistoryDeletingHashMap<K, V>.LinkedEntry<K, V> >(maxSize);
+		this.dataMap = new HashMap<K, FixedSizeHashMap<K, V>.LinkedEntry<K, V> >(maxSize);
 	}
 	
 	public V get(K getKey) {
@@ -107,7 +107,7 @@ public class HistoryDeletingHashMap<K, V>{
 		StringBuilder sb = new StringBuilder();
 		sb.append("Key -> Value\n");
 		sb.append("Size: " + this.dataMap.size() + "\n");
-		for(Entry<K, HistoryDeletingHashMap<K, V>.LinkedEntry<K, V> > e : this.dataMap.entrySet()) {
+		for(Entry<K, FixedSizeHashMap<K, V>.LinkedEntry<K, V> > e : this.dataMap.entrySet()) {
 			sb.append("" + e.getKey() + " -> " + e.getValue() + "\n");
 		}
 		return sb.toString();
@@ -117,7 +117,7 @@ public class HistoryDeletingHashMap<K, V>{
 	
 	////////////////////////////////////////////////////////////////
 	public static void main(String[] args) {
-		HistoryDeletingHashMap<Integer, Integer> map = new HistoryDeletingHashMap<Integer, Integer>(10);
+		FixedSizeHashMap<Integer, Integer> map = new FixedSizeHashMap<Integer, Integer>(10);
 		for(int i = 0; i < 10; i++){
 			map.put(i, i);
 		}
