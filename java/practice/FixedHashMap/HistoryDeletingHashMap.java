@@ -50,10 +50,6 @@ public class HistoryDeletingHashMap<K, V>{
 	 * @return The value that was inserted
 	 */
 	public V put(K newKey, V newValue){
-		//TODO Delete old entry first
-		
-		
-		System.out.println("Putting into map of size: " + dataMap.size());
 		while(dataMap.size() >= maxSize){
 			this.deleteOldest();
 		}
@@ -98,7 +94,6 @@ public class HistoryDeletingHashMap<K, V>{
 	}
 	
 	private LinkedEntry<K, V> deleteOldest() {
-		System.out.println(this.tailKey);
 		return this.remove(this.tailKey);
 	}
 	
@@ -135,6 +130,14 @@ public class HistoryDeletingHashMap<K, V>{
 		map.remove(7);
 		System.out.println(map.toString());
 		
+	}
+
+	public int size() {
+		return dataMap.size();
+	}
+
+	public int maxSize() {
+		return this.maxSize;
 	}
 
 }

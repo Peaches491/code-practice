@@ -4,8 +4,13 @@
   <artifactId>code-practice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <sourceDirectory>java</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
+      
+    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    
+    <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+    <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
