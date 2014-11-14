@@ -43,6 +43,11 @@ public class HistoryDeletingHashMap<K, V>{
 		this.dataMap = new HashMap<K, HistoryDeletingHashMap<K, V>.LinkedEntry<K, V> >(maxSize);
 	}
 	
+	public V get(K getKey) {
+		LinkedEntry<K, V> entry = dataMap.get(getKey);
+		return entry != null ? entry.value : null;
+	}
+	
 	/**
 	 * Put the given value into the hash map, with the given key. 
 	 * @param newKey The key of the item to be added

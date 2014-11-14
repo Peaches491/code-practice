@@ -58,7 +58,13 @@ public class FixedSizeHashMapTest {
 		}
 		
 		assertEquals("After insertion of <maxSize> elements into empty HistoryDeletingHashMap, "
-				+ "size was incorect.", firstSetSize, integerMap.size());
+				+ "size was incorect.", 
+				firstSetSize, 
+				integerMap.size());
+		
+		assertNotNull("After filling HistoryDeletingHashMap without overflow, "
+				+ "oldest element was not found in map. (map.get() returned null)", 
+				integerMap.get(0));
 
 		int secondSetSize = 5;
 		for(int i = 100; i < 100+secondSetSize; i++){
@@ -82,8 +88,10 @@ public class FixedSizeHashMapTest {
 			integerMap.put(i, ""+i);
 		}
 		
-		assertEquals("After insertion of <maxSize> elements into empty HistoryDeletingHashMap, "
-				+ "size was incorect.", integerMapMax, integerMap.size());
+		assertEquals("After insertion into exactly full HistoryDeletingHashMap, "
+				+ "size was incorect.", 
+				integerMapMax, 
+				integerMap.size());
 
 		int secondSetSize = 5;
 		for(int i = 200; i < 200+secondSetSize; i++){
